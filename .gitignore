@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.output/
+.wrangler/
+.tanstack/
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/keystore.properties
+android/*.keystore
+android/*.jks
+*.keystore
+*.jks
+*.p12
+.env
+.env.*

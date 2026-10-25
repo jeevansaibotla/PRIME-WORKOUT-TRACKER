@@ -1,0 +1,19 @@
+import type { CapacitorConfig } from "@capacitor/cli";
+
+const config: CapacitorConfig = {
+  appId: "com.ironpride.app",
+  appName: "IRONPRIDE",
+  webDir: "dist/client",
+  server: {
+    androidScheme: "https",
+  },
+  plugins: {
+    StatusBar: {
+      overlaysWebView: true,
+      style: "DARK",
+      backgroundColor: "#0b0708",
+    },
+  },
+};
+
+export default config;

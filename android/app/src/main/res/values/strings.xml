@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PRIME</string>
+    <string name="title_activity_main">PRIME</string>
+    <string name="package_name">com.ironpride.prime</string>
+    <string name="custom_url_scheme">com.ironpride.prime</string>
+</resources>

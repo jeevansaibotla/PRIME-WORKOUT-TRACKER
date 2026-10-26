@@ -15,7 +15,7 @@ See the [GitHub publishing guide](docs/GITHUB_PUBLISHING.md) to enable the demo 
 
 <p align="center">
   <a href="docs/screenshots/prime-app-overview.png">
-    <img src="docs/screenshots/prime-app-overview.png" alt="PRIME / COMMAND app overview mockup showing Home, The Numbers That Matter, Profile, Stats, Exercise Library, Split Planner and PRIME Coach screens" width="100%" />
+    <img src="docs/screenshots/prime-app-overview.png" alt="PRIME / COMMAND app overview mockup showing the Launch screen, Home, The Numbers That Matter, Profile, Stats, Exercise Library, Split Planner and PRIME Coach screens" width="100%" />
   </a>
 </p>
 

@@ -1,0 +1,75 @@
+name: Build signed Android release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: gradle
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install web dependencies
+        run: npm ci
+      - name: Build and sync the Android web app
+        run: npm run cap:sync
+      - name: Prepare release signing key
+        env:
+          ANDROID_SIGNING_KEY_BASE64: ${{ secrets.ANDROID_SIGNING_KEY_BASE64 }}
+          ANDROID_STORE_PASSWORD: ${{ secrets.ANDROID_STORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          set -euo pipefail
+          test -n "$ANDROID_SIGNING_KEY_BASE64"
+          printf '%s' "$ANDROID_SIGNING_KEY_BASE64" | base64 --decode > "$RUNNER_TEMP/prime-release.jks"
+          python3 - <<'PY'
+          import os
+          from pathlib import Path
+
+          def escape(value):
+              return (value.replace('\\', '\\\\')
+                           .replace('\n', '\\n')
+                           .replace('\r', '\\r')
+                           .replace('=', '\\=')
+                           .replace(':', '\\:')
+                           .replace('#', '\\#')
+                           .replace('!', '\\!'))
+
+          values = {
+              'storeFile': os.environ['RUNNER_TEMP'] + '/prime-release.jks',
+              'storePassword': os.environ['ANDROID_STORE_PASSWORD'],
+              'keyAlias': os.environ['ANDROID_KEY_ALIAS'],
+              'keyPassword': os.environ['ANDROID_KEY_PASSWORD'],
+          }
+          Path('android/keystore.properties').write_text(
+              ''.join(f'{key}={escape(value)}\n' for key, value in values.items()),
+              encoding='utf-8',
+          )
+          PY
+      - name: Build signed APK
+        run: |
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleRelease --no-daemon
+      - name: Publish APK on GitHub Releases
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: android/app/build/outputs/apk/release/app-release.apk

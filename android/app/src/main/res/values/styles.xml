@@ -4,22 +4,24 @@
         <item name="android:fontFamily">sans</item>
         <item name="android:windowActionModeOverlay">true</item>
         <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/prime_ivory</item>
         <item name="android:colorAccent">@color/prime_cobalt</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:statusBarColor">@color/prime_ivory</item>
         <item name="android:navigationBarColor">@color/prime_ivory</item>
         <item name="android:windowLightNavigationBar">true</item>
-        <item name="android:windowBackground">@color/prime_ivory</item>
-        <item name="android:windowDisablePreview">true</item>
     </style>
 
     <style name="AppTheme.NoActionBarLaunch" parent="AppTheme">
         <item name="android:windowBackground">@color/prime_ivory</item>
+        <item name="android:windowSplashScreenBackground">@color/prime_ivory</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/prime_launch_mark</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">@color/prime_ivory</item>
+        <item name="android:windowSplashScreenAnimationDuration">180</item>
         <item name="android:statusBarColor">@color/prime_ivory</item>
         <item name="android:navigationBarColor">@color/prime_ivory</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:windowLightNavigationBar">true</item>
-        <item name="android:windowSplashScreenBackground">@color/prime_ivory</item>
         <item name="postSplashScreenTheme">@style/AppTheme</item>
     </style>
 </resources>

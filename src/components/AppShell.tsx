@@ -16,7 +16,10 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   return (
-    <div className="cinematic-stage relative min-h-[100svh] min-h-[100dvh] overflow-x-hidden bg-background">
+    <div
+      data-prime-app-ready="true"
+      className="cinematic-stage relative min-h-[100svh] min-h-[100dvh] overflow-x-hidden bg-background"
+    >
       <div className="cinematic-atmosphere pointer-events-none fixed inset-0 z-0" aria-hidden />
       <div className="pointer-events-none fixed inset-x-0 top-0 h-[30rem]" aria-hidden>
         <div className="aurora-field" />

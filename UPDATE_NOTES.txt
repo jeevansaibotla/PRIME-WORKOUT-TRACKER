@@ -1,0 +1,19 @@
+PRIME splash + progress-photo update
+
+Contents
+- Reference-based PRIME / COMMAND splash UI with a full-screen flowing fiber background.
+- The splash has no visible loader or loading label; the lower area reads “MADE WITH PASSION BY JEEVAN SAI KUMAR BOTLA”. It dismisses after the app surface is actually rendered, without an artificial minimum delay. Android's native splash waits for the bundled WebView to finish loading, with a 12-second failure-safe upper bound only.
+- Standard CSS safe-area insets (`env(safe-area-inset-top/right/bottom/left)`) adapt the splash and app shell to different mobile notches, cutouts, gesture areas and landscape edges. Native Android splash/status/navigation bars use PRIME ivory.
+- Profile progress-photo gallery: add from device library or camera, view, and delete. Images are kept offline in IndexedDB and are not included in workout JSON backups.
+- Portrait PNG preview is included at docs/screenshots/splash-preview.png, and the GitHub README embeds it.
+
+Background resolution
+- Background asset: 1440 x 2560 px (portrait, 9:16). The available AI upscaling attempt returned a smaller file, so the bundle does not label the asset as 4K.
+
+Apply to an existing PRIME project
+1. Extract/merge this ZIP into the root of the existing project, preserving the relative paths.
+2. From the project root, run: npm run cap:sync
+3. Open the android folder in Android Studio and run Gradle Sync.
+4. Build and cold-launch the APK on the target phone. Check the first launch online/offline, notch/safe areas, and Profile photo add/view/delete.
+
+No Git commit, push, or GitHub release was made. Android Gradle compilation and OEM-specific notch/black-frame behavior could not be verified in this sandbox because no Android SDK/emulator is installed here. Browser safe-inset simulations and CSS/theme checks passed; final device cold-start validation remains necessary.

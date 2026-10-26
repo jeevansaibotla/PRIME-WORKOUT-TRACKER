@@ -20,6 +20,7 @@ import {
   WifiOff,
 } from "lucide-react";
 import { AppShell, PageHeader } from "@/components/AppShell";
+import { ProgressPhotoGallery } from "@/components/ProgressPhotoGallery";
 import { useGym } from "@/hooks/use-gym";
 import { computeStreak, todayISO } from "@/lib/gym-store";
 import { dataToCsv, downloadText } from "@/lib/training-analytics";
@@ -274,6 +275,8 @@ function ProfilePage() {
           last
         />
       </section>
+
+      <ProgressPhotoGallery />
 
       <section className="glass mb-5 rounded-[1.8rem] p-4 sm:p-5">
         <div className="flex items-start gap-3">

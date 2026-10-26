@@ -4,11 +4,22 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowInsetsController;
 
+import androidx.core.splashscreen.SplashScreen;
+
 import com.getcapacitor.BridgeActivity;
 
 public class MainActivity extends BridgeActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
+        long launchStartedAt = android.os.SystemClock.elapsedRealtime();
+        splashScreen.setKeepOnScreenCondition(() -> {
+            // Release on actual WebView readiness, never after an artificial minimum duration.
+            if (android.os.SystemClock.elapsedRealtime() - launchStartedAt > 12_000) return false;
+            return getBridge() == null
+                || getBridge().getWebView() == null
+                || getBridge().getWebView().getProgress() < 100;
+        });
         super.onCreate(savedInstanceState);
         if (getBridge() != null && getBridge().getWebView() != null) {
             getBridge().getWebView().getSettings().setMediaPlaybackRequiresUserGesture(false);

@@ -6,7 +6,7 @@
 6    <uses-sdk android:minSdkVersion="24" />
 7
 8    <application>
-8-->/home/JEEVANBOTLA/Downloads/PRIME MAYBE MAIN V1/android/capacitor-cordova-android-plugins/src/main/AndroidManifest.xml:4:1-6:15
+8-->/home/JEEVANBOTLA/PASSION/PRIME MAIN STREAM V1/PRIME_MAYBE_MAIN_V1/android/capacitor-cordova-android-plugins/src/main/AndroidManifest.xml:4:1-6:15
 9    </application>
 10
 11</manifest>

@@ -4,22 +4,23 @@
 
 PRIME is a local-first workout companion for planning weekly training, guiding and recording sessions, exploring exercises, and reviewing progress. The responsive React app can run in a browser or be packaged as a native Android app with Capacitor. Core workout and profile features work offline; an optional online Coach mode is separate and user-configured.
 
+[Open the live browser demo](https://jeevansaibotla.github.io/PRIME-WORKOUT-TRACKER/) · [Download the latest Android APK](https://github.com/jeevansaibotla/PRIME-WORKOUT-TRACKER/releases/latest) · [GitHub repository](https://github.com/jeevansaibotla/PRIME-WORKOUT-TRACKER)
+
+See the [GitHub publishing guide](docs/GITHUB_PUBLISHING.md) to enable the demo and automate signed APK releases.
+
 > **Application ID:** `com.ironpride.prime` · **Version:** `1.0.1` · **Target SDK:** 36  
 > Screenshots use synthetic sample workout data for documentation. Sample athlete data is not bundled into the app's default profile.
 
 ## Screenshots
 
 <p align="center">
-  <img src="docs/screenshots/home.png" alt="Home dashboard with Week in Motion, weekly metrics and Coach" width="49%" />
-  <img src="docs/screenshots/profile.png" alt="Profile dashboard with training focus, stats and backups" width="49%" />
+  <a href="docs/screenshots/prime-app-overview.png">
+    <img src="docs/screenshots/prime-app-overview.png" alt="PRIME / COMMAND app overview mockup showing Home, The Numbers That Matter, Profile, Stats, Exercise Library, Split Planner and PRIME Coach screens" width="100%" />
+  </a>
 </p>
+
 <p align="center">
-  <img src="docs/screenshots/stats.png" alt="Stats page with muscle balance and front/back target maps" width="49%" />
-  <img src="docs/screenshots/exercises.png" alt="Offline exercise library with search and filters" width="49%" />
-</p>
-<p align="center">
-  <img src="docs/screenshots/plan.png" alt="Weekly split builder" width="49%" />
-  <img src="docs/screenshots/coach-intake.png" alt="Seven-step PRIME Coach workout intake" width="49%" />
+  <img src="docs/screenshots/splash-preview.png" alt="PRIME / COMMAND splash screen with the flowing fiber background and Jeevan Sai Kumar Botla attribution" width="280" />
 </p>
 
 ## Features
@@ -58,10 +59,11 @@ PRIME is a local-first workout companion for planning weekly training, guiding a
 ### Profile, data and privacy
 
 - Profile dashboard with editable name, goal and body weight; workout count, training streak, hours trained and weekly plan completion.
+- Private progress-photo gallery for adding, viewing and deleting progress images. Photos stay in local app storage and are not uploaded or included in JSON workout backups.
 - Export a complete JSON backup, restore a JSON backup, or export the training log as CSV. Resetting local data requires confirmation.
 - Core app data lives in browser storage inside the app/WebView. No account or remote workout database is required for ordinary offline use.
 - A native Android home-screen widget shows a time-based greeting, profile name, today's workout/recovery state and workout focus. It uses a locally bundled image and can open PRIME when tapped.
-- Android safe-area/edge-to-edge support, bundled fonts and mobile-specific motion/blur tuning support a consistent, responsive app experience.
+- Standards-based CSS safe-area insets adapt the launch screen and app shell around mobile notches, cutouts, gesture areas and landscape edges. Android system/status bars use the PRIME ivory theme; bundled fonts and motion/blur tuning keep the experience consistent.
 
 ## Technology
 

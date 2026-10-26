@@ -7,17 +7,20 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { GymProvider } from "@/hooks/use-gym";
 import { Toaster } from "@/components/ui/sonner";
-
+import { PrimeLaunchScreen } from "@/components/PrimeLaunchScreen";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+    <div
+      data-prime-app-ready="true"
+      className="flex min-h-screen items-center justify-center bg-background px-4"
+    >
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
         <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
@@ -45,7 +48,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   }, [error]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+    <div
+      data-prime-app-ready="true"
+      className="flex min-h-screen items-center justify-center bg-background px-4"
+    >
       <div className="max-w-md text-center">
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
           This page didn't load
@@ -64,7 +70,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
             Try again
           </button>
           <a
-            href="/"
+            href={import.meta.env.BASE_URL}
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
           >
             Go home
@@ -125,6 +131,29 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const [startupReady, setStartupReady] = useState(false);
+
+  useEffect(() => {
+    let frame = 0;
+    let observer: MutationObserver | undefined;
+    const revealDashboardWhenRendered = () => {
+      if (!document.querySelector("[data-prime-app-ready='true']")) return false;
+      frame = window.requestAnimationFrame(() => setStartupReady(true));
+      return true;
+    };
+
+    if (!revealDashboardWhenRendered()) {
+      observer = new MutationObserver(() => {
+        if (revealDashboardWhenRendered()) observer?.disconnect();
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+    }
+
+    return () => {
+      observer?.disconnect();
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -132,6 +161,7 @@ function RootComponent() {
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
         <Outlet />
         <Toaster position="top-center" />
+        <PrimeLaunchScreen exiting={startupReady} />
       </GymProvider>
     </QueryClientProvider>
   );

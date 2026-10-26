@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PRIME / COMMAND — App Overview</title>
+    <style>
+      :root {
+        --navy: #071222;
+        --navy-light: #13243b;
+        --ivory: #f4f0e6;
+        --blue: #4f91ff;
+        --copper: #c18167;
+        --muted: #afbdcf;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 2400px;
+        height: 1400px;
+        margin: 0;
+        overflow: hidden;
+      }
+      body {
+        position: relative;
+        isolation: isolate;
+        padding: 72px 90px 58px;
+        background:
+          radial-gradient(ellipse at 51% 60%, rgb(29 79 143 / 28%), transparent 43%),
+          radial-gradient(ellipse at 4% 8%, rgb(193 129 103 / 13%), transparent 31%),
+          linear-gradient(128deg, #071222 0%, #0a1728 52%, #101a2a 100%);
+        color: var(--ivory);
+        font-family: Inter, "Segoe UI", Arial, sans-serif;
+      }
+      .ambient {
+        position: absolute;
+        z-index: -1;
+        top: 250px;
+        left: 50%;
+        width: 1800px;
+        height: 840px;
+        border-radius: 50%;
+        background: radial-gradient(ellipse, rgb(54 116 203 / 14%), transparent 69%);
+        filter: blur(16px);
+        transform: translateX(-50%);
+      }
+      .fiber-lines {
+        position: absolute;
+        z-index: -1;
+        right: -40px;
+        bottom: -5px;
+        width: 1100px;
+        height: 650px;
+        opacity: 0.62;
+      }
+      .fiber-left {
+        position: absolute;
+        z-index: -1;
+        left: -150px;
+        top: 520px;
+        width: 650px;
+        height: 480px;
+        opacity: 0.18;
+        transform: rotate(180deg);
+      }
+      .topline {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 4px 22px;
+        border-bottom: 1px solid rgb(177 197 224 / 19%);
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        color: #f6f3eb;
+        font-size: 15px;
+        font-weight: 800;
+        letter-spacing: 0.34em;
+      }
+      .brand-dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: #ff6b64;
+        box-shadow: 0 0 17px rgb(255 90 84 / 58%);
+      }
+      .topline-note {
+        color: #9eacc0;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.27em;
+      }
+      header {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        padding: 29px 5px 8px;
+      }
+      .eyebrow {
+        margin: 0 0 9px;
+        color: #72a8ff;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.34em;
+      }
+      h1 {
+        margin: 0;
+        color: #f4f0e6;
+        font-size: 40px;
+        font-weight: 750;
+        letter-spacing: 0.085em;
+      }
+      .subtitle {
+        margin: 10px 0 0;
+        color: #bdc7d4;
+        font-size: 16px;
+        letter-spacing: 0.065em;
+      }
+      .header-mark {
+        margin-bottom: 6px;
+        color: #9bb7dd;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.28em;
+      }
+      .showcase {
+        position: absolute;
+        top: 306px;
+        left: 50%;
+        display: flex;
+        width: 2200px;
+        height: 790px;
+        align-items: center;
+        justify-content: center;
+        transform: translateX(-50%);
+      }
+      figure {
+        position: relative;
+        display: flex;
+        flex: 0 0 auto;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 0 0 -22px;
+        transform: translateY(var(--lift, 0px)) rotate(var(--tilt, 0deg));
+        transform-origin: 50% 54%;
+        transition: transform 240ms ease;
+      }
+      figure:first-child {
+        margin-left: 0;
+      }
+      .screen-frame {
+        position: relative;
+        width: var(--screen-width, 330px);
+        padding: 6px;
+        border: 1px solid rgb(207 222 244 / 56%);
+        border-radius: 37px;
+        background: linear-gradient(145deg, #8090a3 0%, #27384e 19%, #0c1726 76%, #5d7290 100%);
+        box-shadow:
+          0 35px 75px rgb(0 0 0 / 46%),
+          0 9px 24px rgb(28 90 167 / 22%),
+          inset 0 1px 0 rgb(255 255 255 / 42%);
+      }
+      .screen-frame::after {
+        position: absolute;
+        inset: 7px;
+        border: 1px solid rgb(255 255 255 / 12%);
+        border-radius: 31px;
+        content: "";
+        pointer-events: none;
+      }
+      .screen-frame img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 30px;
+        background: var(--ivory);
+      }
+      figure:nth-child(1) {
+        z-index: 3;
+        --screen-width: 300px;
+        --lift: 22px;
+        --tilt: -4deg;
+      }
+      figure:nth-child(2) {
+        z-index: 5;
+        --screen-width: 320px;
+        --lift: -6px;
+        --tilt: -2.8deg;
+      }
+      figure:nth-child(3) {
+        z-index: 4;
+        --screen-width: 314px;
+        --lift: 8px;
+        --tilt: -1.8deg;
+      }
+      figure:nth-child(4) {
+        z-index: 6;
+        --screen-width: 344px;
+        --lift: -22px;
+        --tilt: -0.8deg;
+      }
+      figure:nth-child(5) {
+        z-index: 6;
+        --screen-width: 344px;
+        --lift: -22px;
+        --tilt: 0.8deg;
+      }
+      figure:nth-child(6) {
+        z-index: 4;
+        --screen-width: 314px;
+        --lift: 8px;
+        --tilt: 1.8deg;
+      }
+      figure:nth-child(7) {
+        z-index: 3;
+        --screen-width: 300px;
+        --lift: 22px;
+        --tilt: 4deg;
+      }
+      figcaption {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        min-height: 36px;
+        margin-top: 13px;
+        padding: 0 16px;
+        border: 1px solid rgb(183 204 235 / 18%);
+        border-radius: 999px;
+        background: linear-gradient(120deg, rgb(255 255 255 / 7%), rgb(255 255 255 / 2%));
+        color: #e5ebf3;
+        font-size: 10px;
+        font-weight: 750;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        white-space: nowrap;
+        box-shadow: 0 7px 20px rgb(0 0 0 / 15%);
+      }
+      figcaption span {
+        color: #7cb0ff;
+        font-size: 9px;
+        letter-spacing: 0.15em;
+      }
+      .footer {
+        position: absolute;
+        right: 94px;
+        bottom: 54px;
+        left: 94px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 16px;
+        border-top: 1px solid rgb(177 197 224 / 16%);
+        color: #97a7bc;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+      }
+      .footer strong {
+        color: #dfe8f6;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ambient" aria-hidden="true"></div>
+    <div class="topline">
+      <div class="brand"><span class="brand-dot"></span>PRIME / COMMAND</div>
+      <div class="topline-note">OFFLINE CORE · STRENGTH, TRACKED WITH INTENT</div>
+    </div>
+    <header>
+      <div>
+        <p class="eyebrow">THE PERFORMANCE WORKSPACE</p>
+        <h1>TRAIN WITH INTENT.</h1>
+        <p class="subtitle">Plan your week. Guide every session. Make progress visible.</p>
+      </div>
+      <div class="header-mark">STRENGTH &nbsp;·&nbsp; CONSISTENCY &nbsp;·&nbsp; RECOVERY</div>
+    </header>
+    <svg class="fiber-lines" viewBox="0 0 1100 650" fill="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="fiber-a" x1="0" y1="1" x2="1" y2="0">
+          <stop stop-color="#c18167" stop-opacity="0" />
+          <stop offset=".48" stop-color="#c18167" stop-opacity=".56" />
+          <stop offset="1" stop-color="#c18167" stop-opacity="0" />
+        </linearGradient>
+        <linearGradient id="fiber-b" x1="0" y1="1" x2="1" y2="0">
+          <stop stop-color="#4f91ff" stop-opacity="0" />
+          <stop offset=".52" stop-color="#4f91ff" stop-opacity=".7" />
+          <stop offset="1" stop-color="#4f91ff" stop-opacity="0" />
+        </linearGradient>
+        <linearGradient id="fiber-c" x1="0" y1="1" x2="1" y2="0">
+          <stop stop-color="#8c4146" stop-opacity="0" />
+          <stop offset=".5" stop-color="#8c4146" stop-opacity=".5" />
+          <stop offset="1" stop-color="#8c4146" stop-opacity="0" />
+        </linearGradient>
+      </defs>
+      <g stroke-linecap="round">
+        <path
+          d="M1120 4C830 96 882 226 636 315S280 467-30 650"
+          stroke="url(#fiber-a)"
+          stroke-width="2"
+        />
+        <path
+          d="M1130 36C856 129 901 253 661 345S316 494-20 678"
+          stroke="url(#fiber-b)"
+          stroke-width="2.4"
+        />
+        <path
+          d="M1140 69C883 164 923 283 688 377S352 523-10 708"
+          stroke="url(#fiber-c)"
+          stroke-width="1.8"
+        />
+        <path
+          d="M1150 104C910 199 944 313 716 409S388 551 0 738"
+          stroke="url(#fiber-a)"
+          stroke-width="1.5"
+        />
+        <path
+          d="M1160 141C937 237 966 345 744 441S426 580 10 768"
+          stroke="url(#fiber-b)"
+          stroke-width="2"
+        />
+        <path
+          d="M1170 179C965 274 989 377 774 475S462 611 20 798"
+          stroke="url(#fiber-c)"
+          stroke-width="1.4"
+        />
+        <path
+          d="M1180 219C994 313 1014 408 805 508S500 642 30 828"
+          stroke="url(#fiber-a)"
+          stroke-width="1.7"
+        />
+        <path
+          d="M1190 260C1024 351 1040 441 837 542S540 673 40 858"
+          stroke="url(#fiber-b)"
+          stroke-width="2"
+        />
+      </g>
+    </svg>
+    <svg class="fiber-left" viewBox="0 0 650 480" fill="none" aria-hidden="true">
+      <path d="M680 10C480 68 510 179 342 240S146 352-20 470" stroke="#c18167" stroke-width="2" />
+      <path d="M690 42C506 103 530 202 364 267S177 377-10 498" stroke="#4f91ff" stroke-width="2" />
+      <path d="M700 76C532 139 550 228 386 294S207 402 0 526" stroke="#8c4146" stroke-width="1.5" />
+      <path
+        d="M710 112C559 175 572 255 410 323S238 428 10 554"
+        stroke="#c18167"
+        stroke-width="1.5"
+      />
+    </svg>
+    <main class="showcase">
+      <figure>
+        <div class="screen-frame"><img src="home.png" alt="PRIME Home screen" /></div>
+        <figcaption><span>01</span>Home</figcaption>
+      </figure>
+      <figure>
+        <div class="screen-frame">
+          <img src="numbers.png" alt="PRIME Home screen — The Numbers That Matter" />
+        </div>
+        <figcaption><span>02</span>Numbers That Matter</figcaption>
+      </figure>
+      <figure>
+        <div class="screen-frame"><img src="profile.png" alt="PRIME Profile screen" /></div>
+        <figcaption><span>03</span>Profile</figcaption>
+      </figure>
+      <figure>
+        <div class="screen-frame"><img src="stats.png" alt="PRIME Stats screen" /></div>
+        <figcaption><span>04</span>Stats</figcaption>
+      </figure>
+      <figure>
+        <div class="screen-frame">
+          <img src="exercises.png" alt="PRIME Exercise Library screen" />
+        </div>
+        <figcaption><span>05</span>Exercise Library</figcaption>
+      </figure>
+      <figure>
+        <div class="screen-frame"><img src="plan.png" alt="PRIME Split Planner screen" /></div>
+        <figcaption><span>06</span>Split Planner</figcaption>
+      </figure>
+      <figure>
+        <div class="screen-frame">
+          <img src="coach-intake.png" alt="PRIME Coach workout builder screen" />
+        </div>
+        <figcaption><span>07</span>PRIME Coach</figcaption>
+      </figure>
+    </main>
+    <footer class="footer">
+      <span><strong>ONE APP.</strong> YOUR COMPLETE TRAINING PICTURE.</span
+      ><span>PLAN · TRAIN · TRACK · RECOVER</span>
+    </footer>
+  </body>
+</html>

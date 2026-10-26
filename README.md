@@ -19,10 +19,6 @@ See the [GitHub publishing guide](docs/GITHUB_PUBLISHING.md) to enable the demo 
   </a>
 </p>
 
-<p align="center">
-  <img src="docs/screenshots/splash-preview.png" alt="PRIME / COMMAND splash screen with the flowing fiber background and Jeevan Sai Kumar Botla attribution" width="280" />
-</p>
-
 ## Features
 
 ### Home and training

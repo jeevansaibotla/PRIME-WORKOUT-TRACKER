@@ -12,6 +12,7 @@ const isMobileBuild = process.env["CAPACITOR_BUILD"] === "true";
 
 export default defineConfig({
   vite: {
+    base: process.env["VITE_BASE_PATH"] ?? "/",
     server: {
       allowedHosts: true,
     },

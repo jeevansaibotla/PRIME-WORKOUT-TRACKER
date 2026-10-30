@@ -3,31 +3,34 @@
     android:id="@+id/widget_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clipToOutline="true"
     android:background="@drawable/widget_background"
-    android:padding="1dp">
+    android:clipToOutline="true">
 
     <ImageView
         android:id="@+id/widget_art"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:alpha="0.38"
+        android:alpha="0.42"
         android:contentDescription="@null"
         android:scaleType="centerCrop"
         android:src="@drawable/widget_hero" />
 
-    <View
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/widget_veil" />
+        android:contentDescription="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/widget_veil" />
 
     <LinearLayout
+        android:id="@+id/widget_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="12dp">
 
         <LinearLayout
+            android:id="@+id/widget_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
@@ -45,9 +48,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:ellipsize="end"
                 android:fontFamily="sans"
+                android:maxLines="1"
                 android:text="GOOD MORNING"
-                android:textColor="#1764D8"
+                android:textColor="#12213A"
                 android:textSize="10sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.18" />
@@ -56,107 +61,163 @@
                 android:id="@+id/widget_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:ellipsize="end"
                 android:fontFamily="sans"
-                android:text="OFFLINE CORE"
-                android:textColor="#56647A"
+                android:maxLines="1"
+                android:text="5 MOVES READY"
+                android:textColor="#1764D8"
                 android:textSize="8sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.12" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/widget_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:fontFamily="sans-serif-condensed"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:text="ATHLETE"
-            android:textColor="#12213A"
-            android:textSize="30sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/widget_tagline"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
-            android:maxLines="1"
-            android:text="Train with intent. Let the work become visible."
-            android:textColor="#5A6676"
-            android:textSize="10sp" />
-
         <LinearLayout
-            android:id="@+id/widget_action"
+            android:id="@+id/widget_body"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/widget_action_surface"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
             android:gravity="center_vertical"
-            android:minHeight="58dp"
-            android:orientation="horizontal"
-            android:paddingStart="12dp"
-            android:paddingTop="8dp"
-            android:paddingEnd="10dp"
-            android:paddingBottom="8dp">
-
-            <ImageView
-                android:layout_width="38dp"
-                android:layout_height="38dp"
-                android:layout_marginEnd="10dp"
-                android:contentDescription="@null"
-                android:padding="8dp"
-                android:src="@drawable/widget_dumbbell" />
+            android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/widget_text_column"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:layout_weight="1.55"
+                android:gravity="center_vertical"
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans"
-                    android:text="TODAY'S WORKOUT"
-                    android:textColor="#58708F"
-                    android:textSize="8sp"
-                    android:textStyle="bold"
-                    android:letterSpacing="0.16" />
-
-                <TextView
-                    android:id="@+id/widget_split"
+                    android:id="@+id/widget_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:ellipsize="end"
                     android:fontFamily="sans-serif-condensed"
                     android:maxLines="1"
-                    android:ellipsize="end"
-                    android:text="Push Day"
-                    android:textColor="#15243B"
-                    android:textSize="17sp"
+                    android:text="JEEVAN"
+                    android:textColor="#12213A"
+                    android:textSize="30sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/widget_focus"
+                    android:id="@+id/widget_tagline"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:maxLines="1"
+                    android:layout_marginTop="1dp"
                     android:ellipsize="end"
-                    android:text="Chest · Shoulders · Triceps"
-                    android:textColor="#687487"
+                    android:maxLines="1"
+                    android:text="Train with intent. Let the work become visible."
+                    android:textColor="#4F5D72"
                     android:textSize="9sp" />
+
+                <LinearLayout
+                    android:id="@+id/widget_action"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:background="@drawable/widget_action_surface"
+                    android:gravity="center_vertical"
+                    android:minHeight="50dp"
+                    android:orientation="horizontal"
+                    android:paddingStart="9dp"
+                    android:paddingTop="6dp"
+                    android:paddingEnd="8dp"
+                    android:paddingBottom="6dp">
+
+                    <ImageView
+                        android:id="@+id/widget_dumbbell"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginEnd="8dp"
+                        android:contentDescription="@null"
+                        android:padding="6dp"
+                        android:src="@drawable/widget_dumbbell" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/widget_action_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans"
+                            android:maxLines="1"
+                            android:text="TODAY'S WORKOUT"
+                            android:textColor="#58708F"
+                            android:textSize="7sp"
+                            android:textStyle="bold"
+                            android:letterSpacing="0.15" />
+
+                        <TextView
+                            android:id="@+id/widget_split"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:fontFamily="sans-serif-condensed"
+                            android:maxLines="1"
+                            android:text="PUSH DAY"
+                            android:textColor="#15243B"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/widget_focus"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="Chest · Shoulders · Triceps"
+                            android:textColor="#687487"
+                            android:textSize="8sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/widget_count"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="6dp"
+                        android:gravity="center"
+                        android:text="↗"
+                        android:textColor="#1764D8"
+                        android:textSize="20sp" />
+                </LinearLayout>
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/widget_count"
-                android:layout_width="34dp"
-                android:layout_height="34dp"
-                android:gravity="center"
-                android:background="@drawable/widget_arrow_surface"
-                android:text="↗"
-                android:textColor="#1764D8"
-                android:textSize="22sp" />
+            <FrameLayout
+                android:id="@+id/widget_emblem_frame"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_weight="0.85">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:alpha="0.78"
+                    android:background="@drawable/widget_emblem_warm_glow"
+                    android:contentDescription="@null" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:alpha="0.78"
+                    android:background="@drawable/widget_emblem_cool_glow"
+                    android:contentDescription="@null" />
+
+                <ImageView
+                    android:id="@+id/widget_emblem"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:alpha="0.88"
+                    android:contentDescription="PRIME emblem"
+                    android:padding="7dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/prime_launch_mark" />
+            </FrameLayout>
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>

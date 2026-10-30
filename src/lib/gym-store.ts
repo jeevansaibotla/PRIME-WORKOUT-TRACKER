@@ -86,7 +86,7 @@ const ex = (
 
 export function defaultData(): GymData {
   return {
-    profile: { name: "Athlete", goal: "Build Lean Muscle", weight: 68.5 },
+    profile: { name: "Jeevan", goal: "Build Lean Muscle", weight: 68.5 },
     weightHistory: [],
     plan: [
       { name: "Rest Day", focus: "Recovery", rest: true, exercises: [] },
@@ -158,9 +158,17 @@ export function loadData(): GymData {
   try {
     const raw = window.localStorage.getItem(KEY);
     if (!raw) return defaultData();
-    const parsed = JSON.parse(raw) as GymData;
+    const parsed = JSON.parse(raw) as Partial<GymData>;
     if (!parsed?.plan || parsed.plan.length !== 7) return defaultData();
-    return { ...defaultData(), ...parsed };
+    const defaults = defaultData();
+    const merged = {
+      ...defaults,
+      ...parsed,
+      profile: { ...defaults.profile, ...(parsed.profile ?? {}) },
+    };
+    const name = merged.profile.name?.trim();
+    if (!name || name.toLowerCase() === "athlete") merged.profile.name = "Jeevan";
+    return merged;
   } catch {
     return defaultData();
   }

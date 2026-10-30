@@ -8,15 +8,48 @@ PRIME is a local-first workout companion for planning weekly training, guiding a
 
 See the [GitHub publishing guide](docs/GITHUB_PUBLISHING.md) to enable the demo and automate signed APK releases.
 
-> **Application ID:** `com.ironpride.prime` · **Version:** `1.0.1` · **Target SDK:** 36  
+> **Application ID:** `com.ironpride.prime` · **Version:** `1.0.2` · **Target SDK:** 36
 > Screenshots use synthetic sample workout data for documentation. Sample athlete data is not bundled into the app's default profile.
 
 ## Screenshots
 
+The overview links to the full-resolution montage. The individual screens below are shown larger for easier inspection.
+
 <p align="center">
   <a href="docs/screenshots/prime-app-overview.png">
-    <img src="docs/screenshots/prime-app-overview.png" alt="PRIME / COMMAND app overview mockup showing the Launch screen, Home, The Numbers That Matter, Profile, Stats, Exercise Library, Split Planner and PRIME Coach screens" width="100%" />
+    <img src="docs/screenshots/prime-app-overview.png" alt="PRIME / COMMAND app overview mockup showing Launch, Home, The Numbers That Matter, Profile, Stats, Exercise Library, Split Planner and PRIME Coach" width="100%" />
   </a>
+</p>
+
+### Full-size app screens
+
+<p align="center">
+  <a href="docs/screenshots/splash-preview.png"><img src="docs/screenshots/splash-preview.png" alt="PRIME integrated cinematic in-app splash screen" width="49%" /></a>
+  <a href="docs/screenshots/android-native-launch-preview.png"><img src="docs/screenshots/android-native-launch-preview.png" alt="Android native launch screen with the transparent metallic PRIME emblem on ivory" width="49%" /></a>
+</p>
+<p align="center"><sub>The Android native launch image is a static theme preview, not a device capture.</sub></p>
+<p align="center">
+  <a href="docs/screenshots/home.png"><img src="docs/screenshots/home.png" alt="PRIME Home dashboard and Week in Motion" width="49%" /></a>
+  <a href="docs/screenshots/numbers.png"><img src="docs/screenshots/numbers.png" alt="The Numbers That Matter training dashboard" width="49%" /></a>
+</p>
+<p align="center">
+  <a href="docs/screenshots/profile.png"><img src="docs/screenshots/profile.png" alt="PRIME Profile and progress-photo journal" width="49%" /></a>
+  <a href="docs/screenshots/stats.png"><img src="docs/screenshots/stats.png" alt="PRIME Stats with muscle balance and training signals" width="49%" /></a>
+</p>
+<p align="center">
+  <a href="docs/screenshots/exercises.png"><img src="docs/screenshots/exercises.png" alt="PRIME searchable exercise library and movement guidance" width="49%" /></a>
+  <a href="docs/screenshots/plan.png"><img src="docs/screenshots/plan.png" alt="PRIME weekly split planner" width="49%" /></a>
+</p>
+<p align="center">
+  <a href="docs/screenshots/coach-intake.png"><img src="docs/screenshots/coach-intake.png" alt="PRIME Coach workout-builder intake" width="49%" /></a>
+</p>
+
+### Android home-screen widget
+
+The native, resizable widget presents the scheduled workout on training days and a recovery-focused card on rest days. Tap the preview for the full-size two-state mockup.
+
+<p align="center">
+  <a href="docs/screenshots/prime-widget-preview.png"><img src="docs/screenshots/prime-widget-preview.png" alt="PRIME Android widget in active training-day and recovery-day states" width="100%" /></a>
 </p>
 
 ## Features

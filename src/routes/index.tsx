@@ -156,7 +156,7 @@ function Today() {
     if (!hydrated) return;
     void syncPrimeWidgetState({
       dayLabel: now.toLocaleDateString("en-US", { weekday: "short" }),
-      profileName: data.profile.name || "Athlete",
+      profileName: data.profile.name || "Jeevan",
       splitName: split.rest ? "Rest Day" : split.name,
       focus: split.focus,
       isRest: split.rest,
@@ -209,7 +209,7 @@ function Today() {
               {greeting} · {dateLabel}
             </p>
             <h1 className="mt-2 text-6xl leading-[0.78] tracking-tight text-foreground">
-              {data.profile.name || "Athlete"}
+              {data.profile.name || "Jeevan"}
             </h1>
             <p className="mt-4 max-w-[15rem] text-sm leading-relaxed text-foreground/70">
               Train with intent. Let the work become visible.

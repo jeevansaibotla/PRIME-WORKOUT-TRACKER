@@ -4336,15 +4336,12 @@ body,
   }
 }
 
-
 /* Reference-matched PRIME / COMMAND launch screen. */
 .prime-launch-screen {
   padding: max(22px, var(--safe-top)) max(20px, var(--safe-right)) max(22px, var(--safe-bottom))
     max(20px, var(--safe-left));
   color: #12213a;
-  background:
-    radial-gradient(ellipse at 45% 28%, rgb(255 255 255 / 82%), transparent 48%),
-    #fbfaf3;
+  background: #fbfaf3;
 }
 
 .prime-launch-fibers {
@@ -4352,20 +4349,30 @@ body,
 }
 
 .prime-launch-glow {
-  top: 34%;
-  width: min(70vw, 360px);
-  background: radial-gradient(circle, rgb(34 105 220 / 9%), transparent 70%);
+  top: 29%;
+  width: min(74vw, 380px);
+  aspect-ratio: 1.35;
+  background:
+    radial-gradient(
+      ellipse at 50% 52%,
+      rgb(8 12 20 / 94%) 0 32%,
+      rgb(12 17 27 / 76%) 43%,
+      rgb(18 24 35 / 28%) 55%,
+      transparent 70%
+    ),
+    radial-gradient(ellipse at 28% 52%, rgb(227 68 35 / 28%), transparent 61%),
+    radial-gradient(ellipse at 72% 47%, rgb(42 115 232 / 28%), transparent 61%);
 }
 
 .prime-launch-brand {
-  transform: translateY(-13vh);
+  transform: translateY(-4vh);
 }
 
 .prime-launch-emblem {
-  width: clamp(150px, 28vw, 250px);
-  height: clamp(118px, 20vh, 192px);
+  width: clamp(210px, 68vw, 320px);
+  height: clamp(170px, 50vw, 235px);
   aspect-ratio: auto;
-  margin-bottom: clamp(12px, 2.3vh, 25px);
+  margin-bottom: clamp(12px, 2vh, 24px);
   border: 0;
   border-radius: 0;
   background: transparent;
@@ -4376,7 +4383,7 @@ body,
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: none;
+  filter: drop-shadow(0 0 14px rgb(227 68 35 / 18%)) drop-shadow(0 0 22px rgb(42 115 232 / 18%));
 }
 
 .prime-launch-wordmark {
@@ -4401,8 +4408,18 @@ body,
   width: 52px;
   height: 2px;
   margin: clamp(25px, 4.1vh, 42px) 0 clamp(30px, 4.4vh, 46px);
-  background: #1764d8;
-  box-shadow: 0 0 10px rgb(23 100 216 / 24%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #cf482f 18%,
+    #d8a36c 38%,
+    #f2e6d5 50%,
+    #4384e8 76%,
+    transparent
+  );
+  box-shadow:
+    0 0 10px rgb(207 72 47 / 30%),
+    0 0 16px rgb(67 132 232 / 24%);
 }
 
 .prime-launch-tagline {
@@ -4424,21 +4441,20 @@ body,
 
 @media (max-height: 620px) {
   .prime-launch-brand {
-    transform: translateY(-8vh) scale(0.76);
+    transform: translateY(-1vh) scale(0.78);
   }
   .prime-launch-emblem {
-    width: clamp(120px, 21vw, 170px);
-    height: clamp(86px, 17vh, 118px);
-    margin-bottom: 10px;
+    width: clamp(150px, 42vw, 240px);
+    height: clamp(120px, 33vh, 180px);
+    margin-bottom: 6px;
   }
   .prime-launch-divider {
     margin: 14px 0;
   }
 }
 
-
 .prime-launch-emblem img {
-  filter: drop-shadow(0 0 18px rgb(23 100 216 / 16%));
+  filter: drop-shadow(0 0 14px rgb(227 68 35 / 18%)) drop-shadow(0 0 22px rgb(42 115 232 / 18%));
 }
 
 /* Full-bleed fiber background; the art stays soft beneath the live, accessible splash copy. */
@@ -4451,8 +4467,8 @@ body,
   height: 100%;
   object-fit: cover;
   object-position: center;
-  opacity: 0.78;
-  mix-blend-mode: multiply;
+  opacity: 1;
+  mix-blend-mode: normal;
   pointer-events: none;
 }
 

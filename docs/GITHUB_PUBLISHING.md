@@ -19,7 +19,7 @@ The browser app stores each visitor's app data in that visitor's browser storage
 
 ## Downloadable signed Android APK
 
-The `Build signed Android release` workflow runs when a version tag such as `v1.0.1` is pushed. It builds a signed release APK and attaches it to a GitHub Release. Before using the workflow, set up a signing key and add its credentials as repository Actions secrets.
+The `Build signed Android release` workflow runs when a version tag such as `v1.0.2` is pushed. It builds a signed release APK and attaches it to a GitHub Release. Before using the workflow, set up a signing key and add its credentials as repository Actions secrets.
 
 ### Create and protect an Android signing key
 
@@ -66,15 +66,15 @@ Do not paste these values into issues, commits, README files or public messages.
 After pushing the app source and adding the four secrets, create and push a version tag:
 
 ```bash
-git tag v1.0.1
-git push origin v1.0.1
+git tag v1.0.2
+git push origin v1.0.2
 ```
 
 The workflow uploads `app-release.apk` to the repository's Releases page. Visitors can download it from:
 
 <https://github.com/jeevansaibotla/PRIME-WORKOUT-TRACKER/releases/latest>
 
-Before a later release, update Android's `versionCode` and `versionName` in `android/app/build.gradle`, then create a new tag (for example `v1.0.2`). Always use the same signing key. Keep the keystore and password backup safe and private.
+Before a later release, update Android's `versionCode` and `versionName` in `android/app/build.gradle`, then create the next version tag (for example `v1.0.3`). Always use the same signing key. Keep the keystore and password backup safe and private.
 
 ## README buttons
 

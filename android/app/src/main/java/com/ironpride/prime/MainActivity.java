@@ -1,6 +1,7 @@
 package com.ironpride.prime;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowInsetsController;
 
@@ -20,6 +21,11 @@ public class MainActivity extends BridgeActivity {
                 || getBridge().getWebView() == null
                 || getBridge().getWebView().getProgress() < 100;
         });
+        try {
+            registerPlugin(PrimeWidgetPlugin.class);
+        } catch (RuntimeException error) {
+            Log.e("PRIME", "Widget plugin registration failed; continuing app startup.", error);
+        }
         super.onCreate(savedInstanceState);
         if (getBridge() != null && getBridge().getWebView() != null) {
             getBridge().getWebView().getSettings().setMediaPlaybackRequiresUserGesture(false);

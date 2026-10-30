@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>PRIME Android Native Splash Preview</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ivory: #f4f0e6;
+        --ink: #12213a;
+      }
+      * { box-sizing: border-box; }
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+        background: var(--ivory);
+        font-family: Arial, sans-serif;
+      }
+      .device {
+        position: relative;
+        display: grid;
+        width: 100vw;
+        height: 100dvh;
+        grid-template-rows: 30px 1fr 24px;
+        background: var(--ivory);
+        color: var(--ink);
+      }
+      .status {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 22px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .status-icons {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .signal {
+        width: 14px;
+        height: 10px;
+        background: linear-gradient(90deg, var(--ink) 30%, transparent 30% 42%, var(--ink) 42% 66%, transparent 66% 78%, var(--ink) 78%);
+        clip-path: polygon(0 100%, 0 62%, 28% 62%, 28% 40%, 54% 40%, 54% 20%, 80% 20%, 80% 0, 100% 0, 100% 100%);
+      }
+      .wifi {
+        width: 13px;
+        height: 10px;
+        border: 1.8px solid transparent;
+        border-top-color: var(--ink);
+        border-radius: 50%;
+        position: relative;
+      }
+      .wifi::after {
+        content: "";
+        position: absolute;
+        inset: 3px 2px auto;
+        height: 5px;
+        border: 1.6px solid transparent;
+        border-top-color: var(--ink);
+        border-radius: 50%;
+      }
+      .battery {
+        width: 19px;
+        height: 10px;
+        border: 1.4px solid var(--ink);
+        border-radius: 2px;
+        position: relative;
+      }
+      .battery::before {
+        content: "";
+        position: absolute;
+        right: -3px;
+        top: 2px;
+        width: 2px;
+        height: 4px;
+        background: var(--ink);
+      }
+      .battery::after {
+        content: "";
+        position: absolute;
+        inset: 2px;
+        background: var(--ink);
+      }
+      main {
+        display: grid;
+        place-items: center;
+      }
+      .logo-stage {
+        display: grid;
+        width: min(58vw, 224px);
+        aspect-ratio: 1;
+        place-items: center;
+      }
+      .logo-stage img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      .gesture-area {
+        display: grid;
+        place-items: center;
+      }
+      .gesture-pill {
+        width: 108px;
+        height: 4px;
+        border-radius: 999px;
+        background: var(--ink);
+        opacity: 0.78;
+      }
+      @media (max-height: 620px) {
+        .device { grid-template-rows: 24px 1fr 18px; }
+        .logo-stage { width: min(48vw, 184px); }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Static visual simulation of the configured Android system splash, not an emulator capture. -->
+    <div class="device">
+      <header class="status" aria-hidden="true">
+        <span>9:41</span>
+        <span class="status-icons"><i class="signal"></i><i class="wifi"></i><i class="battery"></i></span>
+      </header>
+      <main aria-label="Android native PRIME splash preview">
+        <div class="logo-stage">
+          <img src="../../android/app/src/main/res/drawable-nodpi/prime_launch_mark_splash_safe.png" alt="PRIME emblem with Android safe margins" />
+        </div>
+      </main>
+      <footer class="gesture-area" aria-hidden="true"><span class="gesture-pill"></span></footer>
+    </div>
+  </body>
+</html>

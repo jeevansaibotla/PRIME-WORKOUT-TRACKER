@@ -15,8 +15,7 @@
     <style name="AppTheme.NoActionBarLaunch" parent="AppTheme">
         <item name="android:windowBackground">@color/prime_ivory</item>
         <item name="android:windowSplashScreenBackground">@color/prime_ivory</item>
-        <item name="android:windowSplashScreenAnimatedIcon">@drawable/prime_launch_mark</item>
-        <item name="android:windowSplashScreenIconBackgroundColor">@color/prime_ivory</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/prime_launch_mark_splash_safe</item>
         <item name="android:windowSplashScreenAnimationDuration">180</item>
         <item name="android:statusBarColor">@color/prime_ivory</item>
         <item name="android:navigationBarColor">@color/prime_ivory</item>
